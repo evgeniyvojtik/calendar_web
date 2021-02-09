@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MainPage</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+{% for event in events %}
+<h2>{{ event.event_name }}</h2>
+<h4>{{ event.date }}</h4>
+<h3>{{ event.event_text }}</h3>
+{% endfor %}
+</div>
+</body>
+</html>
