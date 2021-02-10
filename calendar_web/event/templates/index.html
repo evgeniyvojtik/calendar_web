@@ -9,9 +9,23 @@
 <div class="container">
 {% for event in events %}
 <h2>{{ event.event_name }}</h2>
-<h4>{{ event.date }}</h4>
-<h3>{{ event.event_text }}</h3>
+<h5>{{ event.date }}</h5>
+<h6>{{ event.event_text }}</h6>
+<br><br>
+{% if request.user == event.user %}
+<a href="{% url 'delete_event' id=event.id %}">
+    <h3> Delete Event</h3>
+</a>
+{% endif %}
+
 {% endfor %}
+{% if request.user.is_authenticated %}
+<form action="add_event" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Create event">
+</form>
+{% endif %}
 </div>
 </body>
 </html>
